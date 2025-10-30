@@ -21,3 +21,9 @@ jobs:
       - name: Read the contents
         run: ls && cat index.html
 
+      # Step 3: Save index.html as artifact
+      - name: Upload index.html
+        uses: actions/upload-artifact@v4
+        with:
+          name: index.html
+          path: artifacts/

@@ -7,7 +7,7 @@ pipeline {
         }
         stage('deploy') {
             steps {
-		sh '''ansible ansible/webserver.yml -e "hosts=dev"'''
+		sh '''ansible -i /etc/ansible/inventory/hosts.ini ansible/webserver.yml -e "hosts=dev"'''
             }
         }
     }

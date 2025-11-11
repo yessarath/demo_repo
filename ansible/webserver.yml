@@ -1,0 +1,17 @@
+---
+- hosts: "{{hosts}}"
+  gather_facts: False
+  vars:
+    my_name: "Sarath"
+  tasks:
+  - name: ensure nginx is at the latest version
+    apt: pkg=nginx state=latest
+
+  - name: Copy the test web pages
+    template: src=../index.html dest=/var/www/html/index.html
+    notify:
+    - restart nginx
+
+  handlers:
+    - name: restart nginx
+      service: name=nginx state=restarted

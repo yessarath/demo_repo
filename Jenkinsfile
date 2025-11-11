@@ -8,6 +8,8 @@ pipeline {
         stage('deploy') {
             steps {
 		ansible ansible/webserver.yml -e "hosts=dev"
+            }
         }
     }
 }
+
